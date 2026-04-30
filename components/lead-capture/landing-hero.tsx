@@ -1,18 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Activity,
-  Radio,
   Workflow,
   Search,
   ArrowRight,
   Factory,
   Cog,
-  HardHat,
   Wrench,
-  Truck,
   Boxes,
-  Lightbulb,
   Package,
   ShieldCheck,
   type LucideIcon,
@@ -155,91 +150,138 @@ function BackgroundDecoration() {
   );
 }
 
-type CollageMaterial = {
-  label: string;
-  icon: LucideIcon;
-};
-
-const COLLAGE: CollageMaterial[] = [
-  { label: "Raio-X Industrial de Marketing com IA", icon: Activity },
-  { label: "Feira.IA", icon: Radio },
-  { label: "Guia prático de IA para Indústrias", icon: Lightbulb },
-  { label: "10 Prompts Avançados pra operação Industrial", icon: Workflow },
-  { label: "GEO Industrial", icon: Search },
-];
+const PHOTO_ALT =
+  "Profissional de TI com tablet em conversa com operadora industrial de capacete amarelo no chão de uma fábrica brasileira";
 
 function MaterialsCollage() {
   return (
-    <div aria-hidden className="relative h-[560px] w-full select-none">
-      <IconBubble
-        icon={Factory}
-        tone="accent"
-        className="absolute left-[14%] top-[-2%]"
-      />
-      <IconBubble icon={Cog} className="absolute left-[36%] top-[3%]" />
+    <div className="relative h-[600px] w-full select-none">
+      <figure className="absolute left-1/2 top-0 h-[540px] w-[420px] -translate-x-1/2 overflow-hidden rounded-lg shadow-[0_30px_80px_-20px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
+        <Image
+          src="/112.jpg"
+          alt={PHOTO_ALT}
+          fill
+          priority
+          sizes="420px"
+          className="object-cover"
+          style={{ filter: "contrast(1.04) saturate(0.92)" }}
+        />
 
-      <MiniCard
-        icon={Search}
-        title="GEO Industrial"
-        body="Veja se sua indústria é citada pelas IAs quando perguntam sobre seu produto ou solução"
-        className="absolute left-[2%] top-[14%] w-[240px] -rotate-[2deg]"
-      />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_42%,transparent_28%,rgba(5,7,10,0.7)_98%)]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#05070a] via-[#05070a]/70 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-[32%] bg-gradient-to-b from-[#05070a]/65 to-transparent"
+        />
 
-      <HubCard className="absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 -translate-y-1/2" />
+        <CornerBracket position="tl" />
+        <CornerBracket position="tr" />
+        <CornerBracket position="bl" />
+        <CornerBracket position="br" />
 
-      <Pill
-        label="Raio-X Industrial de Marketing com IA"
-        icon={Activity}
-        className="absolute left-[0%] top-[70%]"
-      />
+        <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/85 backdrop-blur-md">
+          <LiveDot />
+          Indústria BR · 2026
+        </span>
 
-      <MiniCard
-        icon={Lightbulb}
-        body="Guia prático pra implementar IA na sua indústria de maneira simples"
-        className="absolute right-[-6%] top-[60%] w-[230px] rotate-[2deg]"
-      />
+        <span
+          aria-hidden
+          className="absolute right-4 top-4 font-display text-[10px] font-medium uppercase tracking-[0.22em] text-white/45"
+        >
+          001 / Operação
+        </span>
 
-      <IconBubble
-        icon={HardHat}
-        size="sm"
-        className="absolute bottom-[6%] left-[18%]"
-      />
+      </figure>
 
-      <IconBubble
-        icon={Wrench}
-        size="sm"
-        className="absolute right-[4%] top-[18%]"
-      />
+      <div aria-hidden className="absolute right-[-2%] top-[7%] w-[210px] rotate-[2.5deg]">
+        <MiniCard
+          icon={Search}
+          title="GEO Industrial"
+          body="Sua indústria sendo citada nas respostas das IAs"
+        />
+      </div>
 
-      <MiniCard
-        icon={Radio}
-        title="Feira.IA"
-        body="Faça os contatos da sua feira virarem venda"
-        className="absolute right-[22%] top-[3%] w-[220px] rotate-[3deg]"
-      />
+      <div aria-hidden className="absolute right-[-1%] bottom-[20%]">
+        <Pill icon={Workflow} label="5 ferramentas prontas" />
+      </div>
 
-      <Pill
-        label="10 Prompts Avançados pra operação Industrial"
-        icon={Workflow}
-        className="absolute bottom-[14%] left-[32%]"
-      />
+      <div aria-hidden className="absolute bottom-[3%] left-[-3%] -rotate-[2deg]">
+        <HubCard className="w-[230px]" />
+      </div>
     </div>
   );
 }
 
 function MaterialsCollageMobile() {
   return (
-    <div className="flex flex-wrap gap-2">
-      {COLLAGE.map(({ label, icon: Icon }) => (
-        <span
-          key={label}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur"
-        >
-          <Icon className="h-3.5 w-3.5 text-[#E85A1E]" aria-hidden />
-          {label}
-        </span>
-      ))}
-    </div>
+    <figure className="relative aspect-[5/4] w-full overflow-hidden rounded-lg shadow-[0_20px_60px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10">
+      <Image
+        src="/112.jpg"
+        alt={PHOTO_ALT}
+        fill
+        sizes="(max-width: 1024px) 100vw, 0px"
+        className="object-cover"
+        style={{ filter: "contrast(1.04) saturate(0.92)" }}
+      />
+
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,transparent_25%,rgba(5,7,10,0.65)_98%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-[#05070a] via-[#05070a]/72 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-[#05070a]/65 to-transparent"
+      />
+
+      <CornerBracket position="tl" />
+      <CornerBracket position="tr" />
+      <CornerBracket position="bl" />
+      <CornerBracket position="br" />
+
+      <span className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/85 backdrop-blur-md">
+        <LiveDot />
+        Indústria BR · 2026
+      </span>
+
+    </figure>
+  );
+}
+
+function CornerBracket({
+  position,
+}: {
+  position: "tl" | "tr" | "bl" | "br";
+}) {
+  const map = {
+    tl: "left-2 top-2 border-l-2 border-t-2",
+    tr: "right-2 top-2 border-r-2 border-t-2",
+    bl: "left-2 bottom-2 border-l-2 border-b-2",
+    br: "right-2 bottom-2 border-r-2 border-b-2",
+  };
+  return (
+    <span
+      aria-hidden
+      className={`pointer-events-none absolute h-3.5 w-3.5 border-[#E85A1E] ${map[position]}`}
+    />
+  );
+}
+
+function LiveDot() {
+  return (
+    <span aria-hidden className="relative flex h-1.5 w-1.5">
+      <span className="absolute inset-0 animate-ping rounded-full bg-[#72e2a7]/80" />
+      <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-[#72e2a7]" />
+    </span>
   );
 }
 
@@ -323,36 +365,6 @@ function MiniCard({
           </span>
         </div>
       </div>
-    </div>
-  );
-}
-
-function IconBubble({
-  icon: Icon,
-  tone = "dark",
-  size = "md",
-  className,
-}: {
-  icon: LucideIcon;
-  tone?: "dark" | "accent";
-  size?: "sm" | "md";
-  className?: string;
-}) {
-  const sizes = {
-    sm: "h-10 w-10",
-    md: "h-12 w-12",
-  };
-  const tones = {
-    dark: "bg-white/[0.08] text-white ring-white/10",
-    accent: "bg-accent-deep text-white ring-accent-deep/40",
-  };
-  return (
-    <div
-      className={`flex ${sizes[size]} items-center justify-center rounded-full ring-1 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.7)] backdrop-blur ${tones[tone]} ${
-        className ?? ""
-      }`}
-    >
-      <Icon className="h-5 w-5" aria-hidden />
     </div>
   );
 }
