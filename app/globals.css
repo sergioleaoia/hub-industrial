@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Leão Marketeria — Design System (Growth Industrial™)
+   "90% preto e branco. 10% verde. Esse verde vale mais que 100% de cor."
+   v1.0 · 2026 — espelha github.com/leao-design-glow
+   ========================================================================== */
+
+@theme inline {
+  /* ------------------------------------------------------------
+     NEUTRAL (13 steps)
+     ------------------------------------------------------------ */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-150: #e8e8e8;
+  --color-neutral-200: #d4d4d4;
+  --color-neutral-300: #a3a3a3;
+  --color-neutral-400: #787878;
+  --color-neutral-500: #5c5c5c;
+  --color-neutral-600: #454545;
+  --color-neutral-700: #303030;
+  --color-neutral-800: #1f1f1f;
+  --color-neutral-900: #141414;
+  --color-neutral-950: #0a0a0a;
+
+  /* ------------------------------------------------------------
+     PRIMARY — Verde Leão (6 steps)
+     ------------------------------------------------------------ */
+  --color-primary-100: #e3f9ed;  /* hover sutil */
+  --color-primary-200: #b0e8cc;  /* badge bg */
+  --color-primary-300: #72e2a7;  /* accent luminoso (dark bg) */
+  --color-primary-500: #3d9368;  /* institucional */
+  --color-primary-700: #1c7c54;  /* profundo (light bg) */
+  --color-primary-900: #0f4430;  /* alto contraste */
+
+  /* ------------------------------------------------------------
+     GOLD — Dourado Leão (3 steps · coroa, nunca em ícones funcionais)
+     ------------------------------------------------------------ */
+  --color-gold-300: #d4a853;
+  --color-gold-500: #a38532;
+  --color-gold-700: #7a6425;
+
+  /* ------------------------------------------------------------
+     SEMÂNTICOS — Light (página) · a app é light-mode
+     ------------------------------------------------------------ */
+  --color-background: #fafafa;
+  --color-foreground: #0a0a0a;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+  --color-card-border: #d4d4d4;
+
+  --color-muted: #787878;        /* texto muted (neutral-400) */
+  --color-muted-dim: #a3a3a3;    /* texto mais suave (neutral-300) */
+  --color-muted-surface: #f5f5f5;
+
+  --color-accent: #3d9368;                 /* verde institucional (accent adulto) */
+  --color-accent-foreground: #ffffff;
+  --color-accent-light: #72e2a7;           /* accent tech, usar com parcimônia */
+  --color-accent-deep: #1c7c54;            /* verde profundo (hero surfaces) */
+  --color-accent-deepest: #0f4430;
+
+  --color-gold: #d4a853;
+  --color-gold-deep: #a38532;
+
+  /* CTA — laranja industrial (break-pattern, conversão).
+     Extensão do brand: brand oficial não tem laranja — introduzido para
+     quebrar o padrão P&B+verde e comandar atenção nos momentos de
+     conversão (lead capture, formulário). */
+  --color-cta: #e85a1e;
+  --color-cta-hover: #ff6b2c;
+  --color-cta-deep: #c84510;
+  --color-cta-foreground: #ffffff;
+
+  --color-danger: #b91c1c;
+  --color-danger-bright: #ef4444;
+  --color-success: #1c7c54;
+  --color-warning: #b8860b;
+  --color-info: #1e6ca1;
+
+  --color-input: #ffffff;
+  --color-input-border: #d4d4d4;
+  --color-ring: #3d9368;
+
+  /* Dark surface (para hero e seções sobre #0a0a0a) */
+  --color-surface-dark: #0a0a0a;
+  --color-surface-dark-2: #141414;
+  --color-surface-dark-3: #1f1f1f;
+  --color-border-dark: #303030;
+
+  /* ------------------------------------------------------------
+     TIPOGRAFIA
+     ------------------------------------------------------------ */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+
+  /* ------------------------------------------------------------
+     RADIUS — marca de luxo usa raios sutis (max 8px)
+     ------------------------------------------------------------ */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------
+     SHADOWS — sutis, sempre
+     ------------------------------------------------------------ */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ------------------------------------------------------------
+     GRADIENTES OFICIAIS (4 apenas)
+     ------------------------------------------------------------ */
+  --gradient-symbol-vivo: linear-gradient(180deg, #1c7c54 0%, #3d9368 50%, #72e2a7 100%);
+  --gradient-coroa: linear-gradient(135deg, #1c7c54 0%, #3d9368 33%, #a38532 66%, #d4a853 100%);
+  --gradient-abismo: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+  --gradient-nevoa: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings com Space Grotesk (display) — weights 500/700 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Focus ring consistente (brand: ring #3D9368 light / #72E2A7 dark) */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+/* Scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-200);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-300);
+}
+
+/* ==========================================================================
+   Utilitários de texto baseados na escala tipográfica da marca
+   ========================================================================== */
+.text-overline {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 130%;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .text-overline { font-size: 11px; }
+}
+
+.text-caption {
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Marquee — loop horizontal infinito (usado no strip de setores)
+   ========================================================================== */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 38s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ==========================================================================
+   CTA — wrapper com contorno preto + led orbitando + flecha em movimento
+   ========================================================================== */
+@keyframes cta-arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@keyframes cta-led-spin {
+  to { transform: rotate(1turn); }
+}
+
+/* wrapper que fica em volta do botão */
+.cta-led-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 0.625rem;
+  padding: 1px;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.cta-led-wrap > button {
+  position: relative;
+  z-index: 2;
+  border-radius: 0.5rem;
+  display: inline-flex;
+}
+
+/* led verde: elemento girante atrás do botão, cortado pelo overflow:hidden do wrap */
+.cta-led-wrap::before {
+  content: "";
+  position: absolute;
+  top: -200%;
+  left: -50%;
+  width: 200%;
+  height: 500%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    rgba(114, 226, 167, 0.6) 335deg,
+    #72e2a7 355deg,
+    rgba(114, 226, 167, 0.6) 360deg
+  );
+  animation: cta-led-spin 3.2s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-arrow {
+  animation: cta-arrow-nudge 1.4s ease-in-out infinite;
+  transition: transform 0.2s ease-out;
+}
+
+.group:hover .cta-arrow {
+  animation: none;
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-arrow,
+  .cta-led-wrap::before {
+    animation: none;
+  }
+}
