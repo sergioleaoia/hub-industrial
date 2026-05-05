@@ -7,7 +7,6 @@ const MAKE_WEBHOOK_URL =
 const bodySchema = z.object({
   nome: z.string().min(2).max(120),
   email: z.string().email().max(200),
-  whatsapp: z.string().min(8).max(30),
   utm_source: z.string().max(120).nullable().optional(),
   utm_medium: z.string().max(120).nullable().optional(),
   utm_campaign: z.string().max(120).nullable().optional(),
@@ -35,7 +34,6 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         nome: payload.nome,
         email: payload.email.toLowerCase(),
-        whatsapp: payload.whatsapp,
         origem: "hub-ia-industrial",
         utm_source: payload.utm_source ?? null,
         utm_medium: payload.utm_medium ?? null,

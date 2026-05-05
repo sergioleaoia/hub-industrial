@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ArrowRight, Loader2 } from "lucide-react";
@@ -10,19 +10,6 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-function maskWhatsappBR(value: string) {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (digits.length === 0) return "";
-  if (digits.length <= 2) return `(${digits}`;
-  if (digits.length <= 6) {
-    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  }
-  if (digits.length <= 10) {
-    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
-  }
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-}
 
 const blockedEmailDomains = new Set([
   "empresas.com.br",
@@ -66,15 +53,6 @@ const leadSchema = z.object({
       },
       { message: "Use seu email corporativo." }
     ),
-  whatsapp: z
-    .string()
-    .refine(
-      (v) => {
-        const digits = v.replace(/\D/g, "");
-        return digits.length === 10 || digits.length === 11;
-      },
-      { message: "WhatsApp inválido. Use DDD + número." }
-    ),
 });
 
 type LeadFormData = z.infer<typeof leadSchema>;
@@ -87,11 +65,10 @@ export function LeadForm() {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors, isSubmitting },
   } = useForm<LeadFormData>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { nome: "", email: "", whatsapp: "" },
+    defaultValues: { nome: "", email: "" },
   });
 
   async function onSubmit(data: LeadFormData) {
@@ -122,7 +99,6 @@ export function LeadForm() {
           event: "hub-submit",
           nome: data.nome,
           email: data.email.toLowerCase(),
-          phone: data.whatsapp,
           form_name: "hub-ia-industrial",
         });
       }
@@ -167,25 +143,6 @@ export function LeadForm() {
             {...register("email")}
             placeholder="voce@suaindustria.com.br"
             autoComplete="email"
-          />
-        </Field>
-
-        <Field label="WhatsApp" error={errors.whatsapp?.message}>
-          <Controller
-            name="whatsapp"
-            control={control}
-            render={({ field }) => (
-              <Input
-                {...field}
-                type="tel"
-                inputMode="numeric"
-                placeholder="(11) 99999-9999"
-                autoComplete="tel"
-                maxLength={16}
-                value={field.value ?? ""}
-                onChange={(e) => field.onChange(maskWhatsappBR(e.target.value))}
-              />
-            )}
           />
         </Field>
 
