@@ -89,7 +89,7 @@ export const MATERIALS: Material[] = [
     icon: BookOpen,
     badge: "PDF",
     ctaLabel: "Baixar guia",
-    href: "/Guia%20IA%20para%20Ind%C3%BAstrias.pdf",
+    href: "/guia-ia-para-industrias.pdf",
     kind: "pdf",
     download: "Guia IA para Industrias.pdf",
   },
