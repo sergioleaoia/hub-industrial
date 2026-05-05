@@ -7,12 +7,7 @@ export function HubHero() {
         Obrigado!
       </h1>
 
-      <p className="max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg">
-        Ferramentas proprietárias, guias e playbooks que aceleram Marketing,
-        Vendas Técnicas e Operação B2B
-      </p>
-
-      <div className="relative mt-1 w-full max-w-2xl overflow-hidden rounded-lg border border-card-border bg-card px-5 py-4 text-left shadow-sm sm:px-6">
+      <div className="relative mt-2 w-full max-w-2xl overflow-hidden rounded-lg border border-card-border bg-card px-5 py-4 text-left shadow-sm sm:px-6">
         <div
           aria-hidden
           className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-accent-deep via-accent to-accent-light"

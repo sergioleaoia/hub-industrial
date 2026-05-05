@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { HubHeader } from "@/components/hub/hub-header";
 import { HubHero } from "@/components/hub/hub-hero";
+import { HubAudienceAnchor } from "@/components/hub/hub-audience-anchor";
 import { MaterialsGrid } from "@/components/hub/materials-grid";
+import { HubBrandSeal } from "@/components/hub/hub-brand-seal";
 import { HubFooter } from "@/components/hub/hub-footer";
 
 export const metadata: Metadata = {
@@ -27,11 +29,17 @@ export default function ObrigadoPage() {
           <Container size="lg" className="py-16 sm:py-20 md:py-24">
             <HubHero />
 
+            <div className="mt-12 sm:mt-14 md:mt-16">
+              <HubAudienceAnchor />
+            </div>
+
             <div className="mt-14 sm:mt-16 md:mt-20">
               <MaterialsGrid />
             </div>
           </Container>
         </section>
+
+        <HubBrandSeal />
       </main>
 
       <HubFooter />
